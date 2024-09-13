@@ -2,24 +2,19 @@ package com.sisnot.Model.Entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Table(name = "curso_docente")
+@IdClass(CursoDocentePK.class)
 public class CursoDocente {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_curso_docente", nullable = false)
-    private Long id;
+    private long codCursoFK;
+    @Id
+    private long codDocenteFK;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_docente", referencedColumnName = "id",foreignKey = @ForeignKey(name = "fk_curdocente_cod_docente"))
-    private Docente codDocente;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_curso", referencedColumnName = "id",foreignKey = @ForeignKey(name = "fk_curdocente_cod_curso"))
-    private Curso codCurso;
+    @Column (name="added_Date", nullable=false)
+    private LocalDateTime addedDate;
 
 }

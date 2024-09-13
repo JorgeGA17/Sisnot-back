@@ -5,20 +5,21 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Data
 @Entity
 @Table(name = "docente_alumno")
+@IdClass(DocenteAlumnoPK.class)
 public class DocenteAlumno {
     @Id
-    @Column(name = "cod_docente_alumno", nullable = false)
-    private Long id;
+    private long codAlumnoFK;
+    @Id
+    private long codDocenteFK;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_alumno", referencedColumnName = "id",foreignKey = @ForeignKey(name = "fk_docalum_cod_alumno"))
-    private Alumno codAlumno;
+    @Column (name="added_Date", nullable=false)
+    private LocalDateTime addedDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_docente", referencedColumnName = "id",foreignKey = @ForeignKey(name = "fk_docalum_cod_docente"))
-    private Docente codDocente;
+
 
 }

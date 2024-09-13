@@ -15,7 +15,7 @@ import java.util.Set;
 public class Curso {
     @Id
     @Column(name = "cod_curso", nullable = false)
-    private Long id;
+    private Long CodCurso;
 
     @Size(max = 100)
     @Column(name = "nom_curso", length = 100)
@@ -34,13 +34,13 @@ public class Curso {
     private String estado;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_alumno", referencedColumnName = "id", foreignKey = @ForeignKey(name = "fk_curso_cod_alumno"))
+    @JoinColumn(name = "cod_alumno", referencedColumnName = "cod_alumno", foreignKey = @ForeignKey(name = "fk_curso_cod_alumno"))
     private Alumno codAlumno;
 
-    @OneToMany(mappedBy = "codCurso")
+    @OneToMany(mappedBy = "codCursoFK", cascade = CascadeType.ALL)
     private Set<CursoDocente> cursoDocentes = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "codCurso")
+    @OneToMany(mappedBy = "codCurso", cascade = CascadeType.ALL)
     private Set<Nota> notas = new LinkedHashSet<>();
 
 }

@@ -13,7 +13,7 @@ import java.time.OffsetTime;
 public class Nota {
     @Id
     @Column(name = "cod_nota", nullable = false)
-    private Long id;
+    private Long codNota;
 
     @Column(name = "componente1_nota")
     private Double componente1Nota;
@@ -37,11 +37,11 @@ public class Nota {
     private OffsetTime fechaRegistro;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_alumno", referencedColumnName = "id" , foreignKey = @ForeignKey(name = "fk_nota_cod_alumno"))
+    @JoinColumn(name = "cod_alumno", referencedColumnName = "cod_alumno" , foreignKey = @ForeignKey(name = "fk_nota_cod_alumno"))
     private Alumno codAlumno;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_curso", referencedColumnName = "id" , foreignKey = @ForeignKey(name = "fk_nota_cod_curso"))
+    @JoinColumn(name = "cod_curso", referencedColumnName = "cod_curso" , foreignKey = @ForeignKey(name = "fk_nota_cod_curso"))
     private Curso codCurso;
 
 }

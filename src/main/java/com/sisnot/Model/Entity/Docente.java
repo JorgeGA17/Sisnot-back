@@ -16,7 +16,7 @@ public class Docente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_docente", nullable = false)
-    private Long id;
+    private Long codDocente;
 
     @Size(max = 100)
     @Column(name = "apellido_paterno", length = 100)
@@ -48,10 +48,10 @@ public class Docente {
     @Column(name = "estado", length = 30)
     private String estado;
 
-    @OneToMany(mappedBy = "codDocente")
+    @OneToMany(mappedBy = "codDocenteFK",  cascade = CascadeType.ALL)
     private Set<CursoDocente> cursoDocentes = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "codDocente")
+    @OneToMany(mappedBy = "codDocenteFK",  cascade = CascadeType.ALL)
     private Set<DocenteAlumno> docenteAlumnos = new LinkedHashSet<>();
 
 }
