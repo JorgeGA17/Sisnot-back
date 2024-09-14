@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -41,17 +42,17 @@ public class Docente {
     @Column(name = "email", length = 100)
     private String email;
 
-    @Column(name = "celuar")
+    @Column(name = "celular")
     private Integer celuar;
 
     @Size(max = 30)
     @Column(name = "estado", length = 30)
     private String estado;
 
-    @OneToMany(mappedBy = "codDocenteFK",  cascade = CascadeType.ALL)
-    private Set<CursoDocente> cursoDocentes = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "docente",  cascade = CascadeType.ALL)
+    private List<CursoDocente> cursoDocentes;
 
-    @OneToMany(mappedBy = "codDocenteFK",  cascade = CascadeType.ALL)
-    private Set<DocenteAlumno> docenteAlumnos = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "docente",  cascade = CascadeType.ALL)
+    private List<DocenteAlumno> docenteAlumnos;
 
 }

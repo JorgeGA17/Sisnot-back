@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 @IdClass(CursoDocentePK.class)
 public class CursoDocente {
     @Id
-    private long codCursoFK;
+    private Curso curso;
     @Id
-    private long codDocenteFK;
+    private Docente docente;
 
     @Column (name="added_Date", nullable=false)
     private LocalDateTime addedDate;

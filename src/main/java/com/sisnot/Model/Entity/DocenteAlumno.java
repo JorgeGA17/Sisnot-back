@@ -13,9 +13,9 @@ import java.time.LocalDateTime;
 @IdClass(DocenteAlumnoPK.class)
 public class DocenteAlumno {
     @Id
-    private long codAlumnoFK;
+    private Alumno alumno;
     @Id
-    private long codDocenteFK;
+    private Docente docente;
 
     @Column (name="added_Date", nullable=false)
     private LocalDateTime addedDate;

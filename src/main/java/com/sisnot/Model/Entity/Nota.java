@@ -1,5 +1,6 @@
 package com.sisnot.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import java.time.OffsetTime;
 @Table(name = "nota")
 public class Nota {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_nota", nullable = false)
     private Long codNota;
 
@@ -36,12 +38,16 @@ public class Nota {
     @Column(name = "fecha_registro")
     private OffsetTime fechaRegistro;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_alumno", referencedColumnName = "cod_alumno" , foreignKey = @ForeignKey(name = "fk_nota_cod_alumno"))
+    @ManyToOne
+    @JoinColumn(name = "cod_alumno", referencedColumnName = "cod_alumno" ,
+            foreignKey = @ForeignKey(name = "fk_nota_cod_alumno"))
+
     private Alumno codAlumno;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_curso", referencedColumnName = "cod_curso" , foreignKey = @ForeignKey(name = "fk_nota_cod_curso"))
+    @ManyToOne
+    @JoinColumn(name = "cod_curso", referencedColumnName = "cod_curso" ,
+            foreignKey = @ForeignKey(name = "fk_nota_cod_curso"))
+
     private Curso codCurso;
 
 }

@@ -1,5 +1,6 @@
 package com.sisnot.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -7,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -14,6 +16,7 @@ import java.util.Set;
 @Table(name = "curso")
 public class Curso {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_curso", nullable = false)
     private Long CodCurso;
 
@@ -33,12 +36,13 @@ public class Curso {
     @Column(name = "estado", length = 30)
     private String estado;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_alumno", referencedColumnName = "cod_alumno", foreignKey = @ForeignKey(name = "fk_curso_cod_alumno"))
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "cod_alumno", referencedColumnName = "cod_alumno",
+            foreignKey = @ForeignKey(name = "fk_curso_cod_alumno"))
     private Alumno codAlumno;
 
-    @OneToMany(mappedBy = "codCursoFK", cascade = CascadeType.ALL)
-    private Set<CursoDocente> cursoDocentes = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
+    private List<CursoDocente> cursoDocentes;
 
     @OneToMany(mappedBy = "codCurso", cascade = CascadeType.ALL)
     private Set<Nota> notas = new LinkedHashSet<>();

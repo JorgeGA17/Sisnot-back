@@ -1,5 +1,6 @@
 package com.sisnot.Model.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.time.OffsetTime;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -54,12 +56,12 @@ public class Alumno {
     private String estado;
 
     @OneToMany(mappedBy = "codAlumno")
-    private Set<Curso> cursos = new LinkedHashSet<>();
+    private List<Curso> cursos ;
 
-    @OneToMany(mappedBy = "codAlumnoFK",  cascade = CascadeType.ALL)
-    private Set<DocenteAlumno> docenteAlumnos = new LinkedHashSet<>();
+    //@OneToMany(mappedBy = "alumno",  cascade = CascadeType.ALL)
+   //private List<DocenteAlumno> docenteAlumnos;
 
     @OneToMany(mappedBy = "codAlumno",  cascade = CascadeType.ALL)
-    private Set<Nota> notas = new LinkedHashSet<>();
+    private List<Nota> notas;
 
 }
