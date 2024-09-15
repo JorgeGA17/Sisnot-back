@@ -1,6 +1,7 @@
 package com.sisnot.Model.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -58,8 +59,8 @@ public class Alumno {
     @OneToMany(mappedBy = "codAlumno")
     private List<Curso> cursos ;
 
-    //@OneToMany(mappedBy = "alumno",  cascade = CascadeType.ALL)
-   //private List<DocenteAlumno> docenteAlumnos;
+    @OneToMany(mappedBy = "alumno",  cascade = CascadeType.ALL)
+   private List<DocenteAlumno> docenteAlumnos;
 
     @OneToMany(mappedBy = "codAlumno",  cascade = CascadeType.ALL)
     private List<Nota> notas;
