@@ -3,11 +3,11 @@ package com.sisnot.Service.impl;
 import com.sisnot.Model.Entity.Alumno;
 import com.sisnot.Repository.AlumnoRepository;
 import com.sisnot.Service.AlumnoService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,7 +17,8 @@ public class AlumnoServiceImpl implements AlumnoService {
 
     private final AlumnoRepository alumnoRepository;
 
-    @Transactional
+
+    @Transactional(readOnly = true)
     @Override
     public List<Alumno> getAlL() {
         return alumnoRepository.findAll();
