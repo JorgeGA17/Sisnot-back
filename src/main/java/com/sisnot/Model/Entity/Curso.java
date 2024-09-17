@@ -18,7 +18,6 @@ import java.util.Set;
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_curso", nullable = false)
     private Long id;
 
     @Size(max = 100)

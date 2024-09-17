@@ -14,7 +14,6 @@ import java.time.OffsetTime;
 public class Nota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_nota", nullable = false)
     private Long id;
 
     @Column(name = "componente1_nota")

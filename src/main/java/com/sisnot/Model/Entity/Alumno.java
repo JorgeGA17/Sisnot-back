@@ -20,7 +20,6 @@ import java.util.Set;
 public class Alumno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_alumno", nullable = false)
     private Long id;
 
     @Size(max = 100)
