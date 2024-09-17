@@ -19,7 +19,7 @@ public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_curso", nullable = false)
-    private Long CodCurso;
+    private Long id;
 
     @Size(max = 100)
     @Column(name = "nom_curso", length = 100)

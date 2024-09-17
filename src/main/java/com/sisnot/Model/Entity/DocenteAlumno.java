@@ -13,11 +13,11 @@ import java.time.LocalDateTime;
 @IdClass(DocenteAlumnoPK.class)
 public class DocenteAlumno {
     @Id
-    private Alumno alumno;
+    private Long alumno;
     @Id
-    private Docente docente;
+    private Long docente;
 
-    @Column (name="added_Date", nullable=false)
+    @Column (name="added_Date")
     private LocalDateTime addedDate;
 
 

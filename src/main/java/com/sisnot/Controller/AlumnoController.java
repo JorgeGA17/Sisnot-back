@@ -31,9 +31,9 @@ public class AlumnoController {
         return new ResponseEntity<Page<Alumno>>(alumnos, HttpStatus.OK);
     }
 
-    @GetMapping("/{codAlumno}")
-    public ResponseEntity<Alumno> getAlumnoById(@PathVariable Long codAlumno) {
-            Alumno alumno = alumnoService.findById(codAlumno);
+    @GetMapping("/{id}")
+    public ResponseEntity<Alumno> getAlumnoById(@PathVariable Long id) {
+            Alumno alumno = alumnoService.findById(id);
             return new ResponseEntity<>(alumno, HttpStatus.OK);
     }
 

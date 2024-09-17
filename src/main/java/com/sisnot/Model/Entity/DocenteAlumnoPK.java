@@ -11,13 +11,13 @@ import java.io.Serializable;
 public class DocenteAlumnoPK implements Serializable  {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_alumno", referencedColumnName = "cod_alumno",
+    @JoinColumn(name = "cod_alumno",
             foreignKey = @ForeignKey(name = "fk_docalum_cod_alumno"))
 
     private Alumno alumno;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cod_docente", referencedColumnName = "cod_docente",
+    @JoinColumn(name = "cod_docente",
             foreignKey = @ForeignKey(name = "fk_docalum_cod_docente"))
 
     private Docente docente;

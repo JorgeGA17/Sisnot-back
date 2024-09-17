@@ -21,7 +21,7 @@ public class Alumno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_alumno", nullable = false)
-    private Long codAlumno;
+    private Long id;
 
     @Size(max = 100)
     @Column(name = "apellido_paterno", length = 100)
@@ -55,14 +55,5 @@ public class Alumno {
     @Size(max = 20)
     @Column(name = "estado", length = 20)
     private String estado;
-
-    @OneToMany(mappedBy = "codAlumno")
-    private List<Curso> cursos ;
-
-    @OneToMany(mappedBy = "alumno",  cascade = CascadeType.ALL)
-   private List<DocenteAlumno> docenteAlumnos;
-
-    @OneToMany(mappedBy = "codAlumno",  cascade = CascadeType.ALL)
-    private List<Nota> notas;
 
 }

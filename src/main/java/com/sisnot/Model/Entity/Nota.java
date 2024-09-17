@@ -15,7 +15,7 @@ public class Nota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_nota", nullable = false)
-    private Long codNota;
+    private Long id;
 
     @Column(name = "componente1_nota")
     private Double componente1Nota;
